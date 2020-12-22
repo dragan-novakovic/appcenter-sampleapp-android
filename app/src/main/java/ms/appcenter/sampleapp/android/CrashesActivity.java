@@ -31,14 +31,14 @@ public class CrashesActivity extends Fragment {
     }
 
     public static class CrashDialog extends DialogFragment {
+        Random rand = new Random();
         public Dialog onCreateDialog(Bundle savedInstanceState) {
-            Random rand = new Random();
             // Generate random integers in range 0 to 9
             int rand_int = rand.nextInt(50);
             System.out.println("Random Integers: "+rand_int);
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
             builder.setMessage("A crash report will be sent when you reopen the app.")
-                    .setPositiveButton("Crash app", (dialog, id) -> {
+                    .setPositiveButton("Crash app (" + String.valueOf(rand_int) + ")", (dialog, id) -> {
                         throw new RuntimeException("crashing " + String.valueOf(rand_int));
                     }).setNegativeButton("Cancel", (dialog, id) -> {
                 // Add any code you'd like to execute when users click "Cancel"
