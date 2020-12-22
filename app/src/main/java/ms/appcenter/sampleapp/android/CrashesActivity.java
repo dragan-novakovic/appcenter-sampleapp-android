@@ -10,6 +10,7 @@ import android.widget.Button;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
+import java.lang.Math;
 
 public class CrashesActivity extends Fragment {
 
@@ -33,7 +34,8 @@ public class CrashesActivity extends Fragment {
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
             builder.setMessage("A crash report will be sent when you reopen the app.")
                     .setPositiveButton("Crash app", (dialog, id) -> {
-                        throw new RuntimeException("crashing");
+                        double x = Math.floor(Math.random() * 5);
+                        throw new RuntimeException("crashing " + String.valueOf(x));
                     }).setNegativeButton("Cancel", (dialog, id) -> {
                 // Add any code you'd like to execute when users click "Cancel"
             });
