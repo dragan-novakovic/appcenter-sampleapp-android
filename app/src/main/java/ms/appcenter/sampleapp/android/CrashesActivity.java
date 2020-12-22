@@ -31,10 +31,13 @@ public class CrashesActivity extends Fragment {
 
     public static class CrashDialog extends DialogFragment {
         public Dialog onCreateDialog(Bundle savedInstanceState) {
+            Double x = Math.floor(Math.random() * 5);
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
             builder.setMessage("A crash report will be sent when you reopen the app.")
                     .setPositiveButton("Crash app", (dialog, id) -> {
-                        double x = Math.floor(Math.random() * 5);
+                        if(x.equals(4)) {
+                            throw new RuntimeException("crashing 4 AGAIN!");
+                        }
                         throw new RuntimeException("crashing " + String.valueOf(x));
                     }).setNegativeButton("Cancel", (dialog, id) -> {
                 // Add any code you'd like to execute when users click "Cancel"
