@@ -11,6 +11,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import java.lang.Math;
+import java.util.Random;
 
 public class CrashesActivity extends Fragment {
 
@@ -31,14 +32,14 @@ public class CrashesActivity extends Fragment {
 
     public static class CrashDialog extends DialogFragment {
         public Dialog onCreateDialog(Bundle savedInstanceState) {
-            Double x = Math.floor(Math.random() * 5);
+            Random rand = new Random();
+            // Generate random integers in range 0 to 9
+            int rand_int = rand.nextInt(50);
+            System.out.println("Random Integers: "+rand_int);
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
             builder.setMessage("A crash report will be sent when you reopen the app.")
                     .setPositiveButton("Crash app", (dialog, id) -> {
-                        if(x.equals(4)) {
-                            throw new RuntimeException("crashing 4 AGAIN!");
-                        }
-                        throw new RuntimeException("crashing " + String.valueOf(x));
+                        throw new RuntimeException("crashing " + String.valueOf(rand_int));
                     }).setNegativeButton("Cancel", (dialog, id) -> {
                 // Add any code you'd like to execute when users click "Cancel"
             });
