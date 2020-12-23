@@ -33,10 +33,10 @@ public class WelcomeActivity extends Fragment {
         @RequiresApi(api = Build.VERSION_CODES.O)
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-            int seconds = LocalDateTime.now().getSecond();
-            System.out.println("Random seconds: "+seconds);
             builder.setMessage("A crash report will be sent when you reopen the app.")
-                    .setPositiveButton("Crash app at " + seconds, (dialog, id) -> {
+                    .setPositiveButton("Crash app", (dialog, id) -> {
+                        int seconds = LocalDateTime.now().getSecond();
+                        System.out.println("Random seconds: "+seconds);
                         throw new RuntimeException("crashing " + String.valueOf(seconds));
                     }).setNegativeButton("Cancel", (dialog, id) -> {
                 // Add any code you'd like to execute when users click "Cancel"
