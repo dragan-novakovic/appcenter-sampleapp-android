@@ -13,6 +13,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
+import com.microsoft.appcenter.analytics.Analytics;
+
 import java.time.LocalDateTime;
 
 public class WelcomeActivity extends Fragment {
@@ -26,6 +28,7 @@ public class WelcomeActivity extends Fragment {
             DialogFragment crashDialog = new MyCrashDialog();
             crashDialog.show(getFragmentManager(), "crashDialog");
         });
+        Analytics.trackEvent("Welcome loaded");
         return rootView;
     }
 
