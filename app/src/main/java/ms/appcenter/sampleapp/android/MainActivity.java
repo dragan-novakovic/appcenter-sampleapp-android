@@ -38,9 +38,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_root);
 
         // Initialize SDK
-        AppCenter.start(getApplication(), "165fb421-cc51-4190-9bd5-bac8a87f5f3d",
-                Analytics.class, Crashes.class, Distribute.class);
-
+        AppCenter.start(getApplication(), "c7b083cc-1641-410e-914f-3c47f18e4d85",
+                Analytics.class, Crashes.class);
 
         if (BuildConfig.DEBUG) {
             AppCenter.setLogLevel(Log.VERBOSE);
